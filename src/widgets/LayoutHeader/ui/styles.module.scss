@@ -1,8 +1,13 @@
 .header {
     background-color: #4f46e5; /* bg-indigo-600 */
-    color: #ffffff; /* text-white */
+    color: #ffffff;
     padding: 16px; /* p-4 */
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
+}
+
+[data-theme='dark'] .header {
+    background-color: #4338ca; /* darker indigo for dark mode */
+    color: #f9fafb; /* light gray text for dark mode */
 }
 
 .container {
@@ -15,8 +20,9 @@
 }
 
 .title {
-    font-size: 24px; /* text-2xl */
-    font-weight: 700; /* font-bold */
+    font-size: 24px;
+    font-weight: 700;
+    color: #d1d5db
 }
 
 .nav {
@@ -31,4 +37,10 @@
     &:hover {
         color: #c7d2fe; /* hover:text-indigo-200 */
     }
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
 }

@@ -1,9 +1,11 @@
 .mainLayoutContainer {
-    max-width: 1024px; // max-w-4xl
-    margin: 0 auto;    // mx-auto
-    padding: 20px;     // p-4
-    min-height: 100vh;
-    background-color: #f3f4f6; // bg-gray-100
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f3f4f6;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    color: black
 }
 
 .appTitle {
@@ -41,4 +43,30 @@
     composes: statusMessage;
     background-color: #fffbeb; // bg-yellow-100
     color: #b45309; // text-yellow-700
+}
+
+[data-theme='dark'] .mainLayoutContainer {
+    background-color: #444f8f;
+    color: #d1d5db
+}
+
+[data-theme='dark'] .appTitle {
+    color: #f9fafb;
+}
+
+[data-theme='dark'] .loading {
+    background-color: #1f2937; /* dark gray for loading */
+    color: #d1d5db; /* light gray text */
+}
+
+[data-theme='dark'] .error {
+    background-color: #7f1d1d; /* dark red background */
+    color: #f9fafb; /* light text */
+    border: 1px solid #b91c1c; /* dark red border */
+}
+
+[data-theme='dark'] .empty {
+    background-color: #713f12; /* dark yellow background */
+    color: #f9fafb; /* light text */
+    border: 1px solid #b45309; /* dark yellow border */
 }

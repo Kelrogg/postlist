@@ -2,7 +2,11 @@ import styles from './styles.module.scss';
 import { LayoutHeader } from "~/widgets/LayoutHeader/ui";
 import { LayoutFooter } from "~/widgets/LayoutFooter/ui";
 
-export const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export interface MainLayoutProps {
+  children: React.ReactNode;
+}
+
+export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
     <div className={styles.mainLayout}>
       <LayoutHeader />
