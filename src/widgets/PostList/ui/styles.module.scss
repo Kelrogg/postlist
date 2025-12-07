@@ -1,0 +1,46 @@
+.listContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; // space-y-4
+}
+
+.postTitle {
+    font-size: 20px;
+    font-weight: 600;
+    color: #4f46e5; // text-indigo-600
+    margin-bottom: 4px;
+}
+
+.postBody {
+    color: #374151; // text-gray-700
+    margin-top: 4px;
+    // Ограничение текста (line-clamp-3)
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.postCard {
+    padding: 16px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06); 
+    border-radius: 8px;
+    transition: transform 0.2s;
+    
+    &:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.emptyMessage {
+    text-align: center; // text-center
+    color: #6b7280;     // text-gray-500
+    padding: 32px;      // p-8
+    font-size: 18px;
+    background-color: #f9fafb;
+    border-radius: 8px;
+    border: 1px dashed #d1d5db;
+    margin-top: 20px;
+}

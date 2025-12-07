@@ -1,0 +1,44 @@
+.mainLayoutContainer {
+    max-width: 1024px; // max-w-4xl
+    margin: 0 auto;    // mx-auto
+    padding: 20px;     // p-4
+    min-height: 100vh;
+    background-color: #f3f4f6; // bg-gray-100
+}
+
+.appTitle {
+    font-size: 30px; // text-3xl
+    font-weight: 800; // font-extrabold
+    color: #1f2937; // text-gray-900
+    margin-bottom: 24px; // mb-6
+    text-align: center;
+}
+
+.statusMessage {
+    text-align: center;
+    padding: 32px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.loading {
+    composes: statusMessage;
+    background-color: #f9fafb; // bg-gray-50
+}
+
+.error {
+    composes: statusMessage;
+    background-color: #fee2e2; // bg-red-100
+    color: #b91c1c; // text-red-700
+    border: 1px solid #fca5a5; // border-red-300
+}
+
+.empty {
+    composes: statusMessage;
+    background-color: #fffbeb; // bg-yellow-100
+    color: #b45309; // text-yellow-700
+}
