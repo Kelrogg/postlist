@@ -1,5 +1,6 @@
 import { StrictModeProvider } from "./StrictModeProvider"
 import { ReduxStoreProvider } from "./ReduxStoreProvider"
+import { ThemeProvider } from "~/shared/lib/theme/ThemeProvider"
 
 interface AllInOneProviderProps {
   children: React.ReactNode
@@ -8,9 +9,11 @@ interface AllInOneProviderProps {
 export const AllInOneProvider: React.FC<AllInOneProviderProps> = ({ children }) => {
   return (
     <StrictModeProvider>
-      <ReduxStoreProvider>
-        {children}
-      </ReduxStoreProvider>
+      <ThemeProvider>
+        <ReduxStoreProvider>
+          {children}
+        </ReduxStoreProvider>
+      </ThemeProvider>
     </StrictModeProvider>
   )
 };

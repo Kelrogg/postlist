@@ -1,9 +1,9 @@
 .card {
     background-color: #ffffff;
-    padding: 24px; // p-6
-    border-radius: 8px; // rounded-lg
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); // shadow-md
-    transition: all 0.3s ease-in-out; // transition-shadow duration-300
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
 
     &:hover {
         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); // hover:shadow-lg
@@ -31,4 +31,29 @@
 .author {
     font-weight: 500; // font-medium
     color: #4b5563; // text-gray-600
+}
+
+[data-theme='dark'] .card {
+    background-color: #1f2937;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme='dark'] .card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme='dark'] .title {
+    color: #818cf8;
+}
+
+[data-theme='dark'] .body {
+    color: #d1d5db;
+}
+
+[data-theme='dark'] .meta {
+    color: #9ca3af;
+}
+
+[data-theme='dark'] .author {
+    color: #e5e7eb;
 }

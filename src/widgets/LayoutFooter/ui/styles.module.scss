@@ -11,4 +11,13 @@
     text-align: center;
     font-size: 0.875rem;
     color: #9ca3af;
+
+[data-theme='dark'] .footer {
+    background-color: #111827; /* darker gray for dark mode */
+    color: #f9fafb; /* light gray text for dark mode */
+}
+
+[data-theme='dark'] .container {
+    color: #9ca3af; /* keep the same color for container text */
+}
 }
