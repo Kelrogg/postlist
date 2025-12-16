@@ -5,31 +5,30 @@ import { withLoading } from '~/shared/lib/hoc/withLoading';
 import { useMemo, useState } from 'react';
 import { CommentList } from '~/widgets/CommentList';
 import { filterByLength, PostLengthFilter } from '~/features/PostLengthFilter';
+import { usePosts } from '~/features/PostList/model';
 
 
 interface PostListProps {
   children?: React.ReactNode;
-    // posts: IPost[];
-    // comments: IComment[];
-    // isLoading?: boolean;
 }
 
 const PostListBase: React.FC<PostListProps> = () => {
   const [range, setRange] = useState({min: 0, max: 20});
   
   const {
-    data: postsData,
+    posts,
     isLoading,
     isError,
     error
-  } = useGetPostsQuery();
+  } = usePosts();
 
-  const posts: IPost[] =  postsData || [];
+  // const posts: IPost[] =  postsData || [];
 
   if (isError) {
+    // TODO typing for error
     return (
       <div className={styles['error']}>
-          Ошибка при получении данных: {'status' in error ? `HTTP ${error.status}` : error.message}
+          Ошибка при получении данных: {'status' in error! ? `HTTP ${error.status}` : error!.message}
       </div>
     );
   }

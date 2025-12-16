@@ -1,14 +1,14 @@
+import { Link } from 'react-router-dom';
 import styles from './styles.module.scss';
 import { ThemeSwitcher } from '~/features/ThemeSwitcher';
 import { Modal } from '~/shared/ui/Modal';
-import { useState } from 'react';
 
 export const LayoutHeader: React.FC = () => {
 
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <h1 className={styles.title}>FSD App: Список Постов</h1>
+        <Link to="/"><h1 className={styles.title}>FSD App: Список Постов </h1></Link>
         <div className={styles.actions}>
           <Modal>
             <Modal.Trigger>

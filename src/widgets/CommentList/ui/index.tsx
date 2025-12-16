@@ -147,7 +147,7 @@ interface CommentListProps {
 
 export const CommentList: React.FC<CommentListProps> = ({ postId }) => {
   const comments = COMMENTS
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
 
   const toggleCollapse = () => {
     setIsCollapsed(prev => !prev);
