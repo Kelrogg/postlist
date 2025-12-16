@@ -1,21 +1,67 @@
 import type { IPost } from '~/entities/post';
 import styles from './styles.module.scss';
-import { PostCard } from '~/entities/post';
+import { PostCard, useGetPostsQuery } from '~/entities/post';
+import { withLoading } from '~/shared/lib/hoc/withLoading';
+import { useMemo, useState } from 'react';
+import { CommentList } from '~/widgets/CommentList';
+import { filterByLength, PostLengthFilter } from '~/features/PostLengthFilter';
+
 
 interface PostListProps {
-    posts: IPost[];
+  children?: React.ReactNode;
+    // posts: IPost[];
+    // comments: IComment[];
+    // isLoading?: boolean;
 }
 
-export const PostList: React.FC<PostListProps> = ({ posts }) => {
-  if (posts.length === 0) {
-    return <p className={styles['empty-message']}>Нет доступных постов.</p>;
+const PostListBase: React.FC<PostListProps> = () => {
+  const [range, setRange] = useState({min: 0, max: 20});
+  
+  const {
+    data: postsData,
+    isLoading,
+    isError,
+    error
+  } = useGetPostsQuery();
+
+  const posts: IPost[] =  postsData || [];
+
+  if (isError) {
+    return (
+      <div className={styles['error']}>
+          Ошибка при получении данных: {'status' in error ? `HTTP ${error.status}` : error.message}
+      </div>
+    );
+  }
+
+  const filteredPosts = useMemo(() => {
+    return filterByLength(posts, range.min, range.max);
+  }, [posts, range]);
+
+  const renderedPosts = useMemo(() => {
+    if (filteredPosts.length === 0) {
+      return <p className={styles['empty-message']}>Нет доступных постов.</p>;
+    }
+
+    return filteredPosts.map(post => (
+      <PostCard key={post.id} post={post}>
+        <CommentList postId={post.id} />
+      </PostCard>
+    ));
+  }, [posts, range]);
+
+  if (isLoading) {
+    return null;
   }
 
   return (
     <div className={styles['listContainer']}>
-      {posts.map(post => (
-        <PostCard key={post.id} post={post} />
-      ))}
+      <PostLengthFilter range={range} onFilterChange={(min, max) => {
+        setRange({min, max});
+      }}></PostLengthFilter>
+      {renderedPosts}
     </div>
   );
 };
+
+export const PostList = withLoading(PostListBase);
