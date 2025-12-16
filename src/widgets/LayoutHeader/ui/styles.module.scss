@@ -5,6 +5,11 @@
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
 }
 
+[data-theme='dark'] .header {
+    background-color: #4338ca; /* darker indigo for dark mode */
+    color: #f9fafb; /* light gray text for dark mode */
+}
+
 .container {
     max-width: 1280px; /* max-w-7xl */
     margin-left: auto; /* mx-auto */
@@ -38,9 +43,4 @@
     display: flex;
     gap: 12px;
     align-items: center;
-}
-
-[data-theme='dark'] .header {
-    background-color: #4338ca;
-    color: #f9fafb;
 }

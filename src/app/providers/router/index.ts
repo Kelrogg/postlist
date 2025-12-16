@@ -1,1 +1,0 @@
-export { AppRouter, router } from './model';
