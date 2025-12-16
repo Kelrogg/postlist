@@ -9,8 +9,8 @@ interface CommentCardProps {
 }
 
 export const CommentCard: FC<CommentCardProps> = ({ 
-  comment, 
-  isCollapsed, 
+  comment,
+  isCollapsed = true, 
   onToggle 
 }) => {
   const { id, name, email, body } = comment;
@@ -37,15 +37,3 @@ export const CommentCard: FC<CommentCardProps> = ({
     </div>
   );
 };
-
-// export const CommentCard: React.FC<{ comment: IComment; }> = ({ comment }) => {
-//   return (
-//     <div className={styles['card']}>
-//       <h3 className={styles['title']}>{comment.title}</h3>
-//       <p className={styles['body']}>{comment.body}</p>
-//       <div className={styles['meta']}>
-//         Автор: <span className={styles.author}>Jane Doe TODO</span>
-//       </div>
-//     </div>
-//   );
-// };
