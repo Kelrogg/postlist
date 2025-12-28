@@ -1,0 +1,28 @@
+.listContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  padding: 24px 0;
+}
+
+.error {
+  color: #ef4444;
+  padding: 24px;
+  text-align: center;
+  font-style: italic;
+}
+
+.empty-message {
+  text-align: center;
+  color: #6b7280;
+  padding: 24px;
+  font-style: italic;
+}
+
+[data-theme='dark'] .error {
+  color: #f87171;
+}
+
+[data-theme='dark'] .empty-message {
+  color: #9ca3af;
+}

@@ -1,38 +1,19 @@
-import type { IPost } from '~/entities/post';
 import styles from './styles.module.scss';
-import { PostCard, useGetPostsQuery } from '~/entities/post';
+import { PostCard, type IPost } from '~/entities/post';
 import { withLoading } from '~/shared/lib/hoc/withLoading';
 import { useMemo, useState } from 'react';
 import { CommentList } from '~/widgets/CommentList';
 import { filterByLength, PostLengthFilter } from '~/features/PostLengthFilter';
-import { usePosts } from '~/features/PostList/model';
-
 
 interface PostListProps {
   children?: React.ReactNode;
+  posts?: IPost[];
+  isLoading?: boolean;
 }
 
-const PostListBase: React.FC<PostListProps> = () => {
+const PostListBase: React.FC<PostListProps> = ({ posts = [], isLoading }) => {
   const [range, setRange] = useState({min: 0, max: 20});
   
-  const {
-    posts,
-    isLoading,
-    isError,
-    error
-  } = usePosts();
-
-  // const posts: IPost[] =  postsData || [];
-
-  if (isError) {
-    // TODO typing for error
-    return (
-      <div className={styles['error']}>
-          Ошибка при получении данных: {'status' in error! ? `HTTP ${error.status}` : error!.message}
-      </div>
-    );
-  }
-
   const filteredPosts = useMemo(() => {
     return filterByLength(posts, range.min, range.max);
   }, [posts, range]);
@@ -44,7 +25,7 @@ const PostListBase: React.FC<PostListProps> = () => {
 
     return filteredPosts.map(post => (
       <PostCard key={post.id} post={post}>
-        <CommentList postId={post.id} />
+        <CommentList postId={post.id} isLoading={false} />
       </PostCard>
     ));
   }, [posts, range]);

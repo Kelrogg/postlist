@@ -1,27 +1,20 @@
 import { useParams } from 'react-router-dom';
-import { AlbumCard } from '~/entities/album/ui';
-
-const ALBUMS = [
-  {
-    "userId": 1,
-    "id": 1,
-    "title": "quidem molestiae enim"
-  },
-  {
-    "userId": 1,
-    "id": 2,
-    "title": "sunt qui excepturi placeat culpa"
-  },
-]
+import { AlbumList } from '~/widgets/AlbumList';
+import { useGetAlbumsByUserIdQuery } from '~/entities/album/api';
 
 export const UserAlbumsPage = () => {
   const { id } = useParams<{ id: string }>();
+
+  if (!id) {
+    return <div>Invalid user ID</div>;
+  }
+  
+  const { isLoading } = useGetAlbumsByUserIdQuery(parseInt(id));
   
   return (
     <div>
       <h1>User Albums</h1>
-      {ALBUMS.map(album => <AlbumCard key={album.id} album={album}>{album.title}</AlbumCard>)}
-      <p>User ID: {id}</p>
+      <AlbumList userId={parseInt(id)} isLoading={isLoading} />
     </div>
   );
 };
